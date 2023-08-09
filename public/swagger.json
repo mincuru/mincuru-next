@@ -1,0 +1,48 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Next Swagger API Example",
+    "version": "1.0"
+  },
+  "paths": {
+    "/api/hello": {
+      "get": {
+        "description": "Returns the hello world",
+        "responses": {
+          "200": {
+            "description": "Hello World!"
+          }
+        }
+      }
+    },
+    "/api": {
+      "get": {
+        "summary": "Your GET endpoint",
+        "tags": [],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "hoge": {
+                      "type": "string",
+                      "x-stoplight": {
+                        "id": "473qkm0vcvnrh"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "operationId": "get-api"
+      }
+    }
+  },
+  "components": {},
+  "tags": []
+}
