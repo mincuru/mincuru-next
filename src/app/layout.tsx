@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+// import ResponsiveAppBar from "./components/ResponsiveAppBar";
+import MincuruAppBar from "./components/MincuruAppBar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +19,6 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={inter.className}>
-        <div>Root Layout</div>
         <div>{children}</div>
       </body>
     </html>

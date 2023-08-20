@@ -8,7 +8,6 @@ export default function CarsLayout({
 }) {
   return (
     <div>
-      <div>Cars Layout</div>
       <Suspense fallback={<Loading />}>
         <section>{children}</section>
       </Suspense>
