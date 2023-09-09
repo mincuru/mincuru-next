@@ -53,6 +53,81 @@ export default function Page(props: Props) {
     "REGULAR"
   );
 
+  const cars: Car[] = [
+    new Car(
+      1,
+      "CX-5",
+      "マツダ",
+      "https://www.mazda.co.jp/cars/cx-5/",
+      "https://upload.wikimedia.org/wikipedia/commons/8/85/2017_Mazda_CX-5_%28KF%29_Maxx_2WD_wagon_%282018-11-02%29_01.jpg",
+      3200000,
+      new CarBody("SUV", 4747, 1850, 1690),
+      "ICE",
+      "AWD",
+      "REGULAR"
+    ),
+    new Car(
+      2,
+      "カローラツーリング",
+      "トヨタ",
+      "https://toyota.jp/corollatouring/",
+      "https://upload.wikimedia.org/wikipedia/commons/8/8a/Toyota_COROLLA_TOURING_HYBRID_W%C3%97B_2WD_%286AA-ZWE211W-AWXSB%29_front.jpg",
+      2678500,
+      new CarBody("STATION_WAGON", 4495, 1745, 1460),
+      "StrHV",
+      "AWD",
+      "REGULAR"
+    ),
+    new Car(
+      3,
+      "NSX",
+      "ホンダ",
+      "https://www.honda.co.jp/NSX/types/",
+      "https://upload.wikimedia.org/wikipedia/commons/e/ea/2019_Honda_NSX_3.5_CAA-NC1_%2820190722%29_01.jpg",
+      27940000,
+      new CarBody("COUPE", 4535, 1940, 1215),
+      "MldHV",
+      "AWD",
+      "PREMIUM"
+    ),
+    new Car(
+      4,
+      "Honda e",
+      "ホンダ",
+      "https://www.honda.co.jp/honda-e/",
+      "https://upload.wikimedia.org/wikipedia/commons/9/9e/Honda_e_Advance_%28ZAA-ZC7%29_front.jpg",
+      4950000,
+      new CarBody("HATCHBACK", 3895, 1750, 1510),
+      "BEV",
+      "RR",
+      ""
+    ),
+    new Car(
+      5,
+      "ノート",
+      "日産",
+      "https://www3.nissan.co.jp/vehicles/new/note.html",
+      "https://upload.wikimedia.org/wikipedia/commons/0/0a/Nissan_Note_e-POWER_%28E13%29%2C_2021%2C_front-left.jpg",
+      2445300,
+      new CarBody("HATCHBACK", 4045, 1695, 1520),
+      "SerHV",
+      "FF",
+      "REGULAR"
+    ),
+    new Car(
+      6,
+      "3シリーズツーリング",
+      "BMW",
+      "https://www.bmw.co.jp/ja/all-models/3-series/touring/2019/bmw-3-series-touring-inspire.html",
+      "",
+      6340000,
+      new CarBody("STATION_WAGON", 4715, 1825, 1475),
+      "ICE",
+      "AWD",
+      "DIESEL"
+    ),
+  ];
+
   return (
     <>
       <MincuruAppBar handleDrawerToggle={handleDrawerToggle} />
@@ -72,7 +147,7 @@ export default function Page(props: Props) {
         }}
       >
         <Grid container columnSpacing={2} rowSpacing={2} columns={4}>
-          {Array.from(Array(6)).map((_, index) => (
+          {cars.map((car, index) => (
             <Grid key={index}>
               <CarItem car={car} />
             </Grid>

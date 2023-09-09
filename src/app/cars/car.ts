@@ -83,5 +83,5 @@ export class CarBody {
 }
 
 type PowerTrain = "ICE" | "StrHV" | "MldHV" | "BEV" | "SerHV";
-type DriveSystem = "FF" | "FR" | "AWD";
-type FuelType = "REGULAR" | "PREMIUM" | "DIESEL";
+type DriveSystem = "FF" | "FR" | "AWD" | "RR";
+type FuelType = "REGULAR" | "PREMIUM" | "DIESEL" | "";

@@ -3,6 +3,7 @@ import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { Box, Card, Checkbox, Stack, Typography } from "@mui/material";
 import Image from "next/image";
 import { Car } from "./car";
+import Link from "next/link";
 
 interface Props {
   car: Car;
@@ -18,12 +19,16 @@ export default function CarItem(props: Props) {
         height={8}
         sx={{ width: 340, height: 340 }}
       >
-        <Image
-          src={props.car.imageUrl}
-          alt={props.car.modelName}
-          width={340}
-          height={180}
-        />
+        <Link href={`/cars/${props.car.id}`} passHref>
+          <Box sx={{ width: 340, height: 180, position: "relative" }}>
+            <Image
+              src={props.car.imageUrl}
+              alt={props.car.modelName}
+              fill
+              objectFit={"cover"}
+            />
+          </Box>
+        </Link>
         <Stack
           direction="row"
           alignItems="center"
