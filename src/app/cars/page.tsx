@@ -6,7 +6,15 @@ import MincuruAppBar from "../components/MincuruAppBar";
 import { HogeButton } from "../components/HogeButton";
 import CarsDrawer from "./CarsDrawer";
 import CarItem from "./CarItem";
-import { Car, CarBody } from "./car";
+import {
+  BodyType,
+  Car,
+  Body,
+  PowerTrain,
+  FuelType,
+  DriveSystem,
+  Maker,
+} from "./car";
 
 type Props = {
   data: {
@@ -21,14 +29,6 @@ type Repo = {
 };
 
 // バックエンドからデータ取得
-const navDrawerData = {
-  makerNames: ["マツダ", "トヨタ", "ホンダ", "日産"],
-  bodyTypes: ["SUV", "セダン", "ステーションワゴン"],
-  powerTrains: ["エンジン", "ストロングハイブリッド", "マイルドハイブリッド"],
-  driveSystems: ["FF", "FR", "AWD"],
-  fuelTypes: ["レギュラーガソリン", "ハイオク", "軽油"],
-};
-
 const drawerWidth = 240;
 
 export default function Page(props: Props) {
@@ -36,105 +36,152 @@ export default function Page(props: Props) {
 
   const unko = "Button3";
 
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
-
   const car = new Car(
     1,
     "CX-5",
-    "マツダ",
+    new Maker("マツダ"),
     "https://www.mazda.co.jp/cars/cx-5/",
     "https://upload.wikimedia.org/wikipedia/commons/8/85/2017_Mazda_CX-5_%28KF%29_Maxx_2WD_wagon_%282018-11-02%29_01.jpg",
     3200000,
-    new CarBody("SUV", 4747, 1850, 1690),
-    "ICE",
-    "AWD",
-    "REGULAR"
+    new Body(new BodyType("SUV"), 4747, 1850, 1690),
+    new PowerTrain("ICE"),
+    new DriveSystem("AWD"),
+    new FuelType("REGULAR")
   );
 
   const cars: Car[] = [
     new Car(
       1,
       "CX-5",
-      "マツダ",
+      new Maker("マツダ"),
       "https://www.mazda.co.jp/cars/cx-5/",
       "https://upload.wikimedia.org/wikipedia/commons/8/85/2017_Mazda_CX-5_%28KF%29_Maxx_2WD_wagon_%282018-11-02%29_01.jpg",
       3200000,
-      new CarBody("SUV", 4747, 1850, 1690),
-      "ICE",
-      "AWD",
-      "REGULAR"
+      new Body(new BodyType("SUV"), 4747, 1850, 1690),
+      new PowerTrain("ICE"),
+      new DriveSystem("AWD"),
+      new FuelType("REGULAR")
     ),
     new Car(
       2,
       "カローラツーリング",
-      "トヨタ",
+      new Maker("トヨタ"),
       "https://toyota.jp/corollatouring/",
       "https://upload.wikimedia.org/wikipedia/commons/8/8a/Toyota_COROLLA_TOURING_HYBRID_W%C3%97B_2WD_%286AA-ZWE211W-AWXSB%29_front.jpg",
       2678500,
-      new CarBody("STATION_WAGON", 4495, 1745, 1460),
-      "StrHV",
-      "AWD",
-      "REGULAR"
+      new Body(new BodyType("STATION_WAGON"), 4495, 1745, 1460),
+      new PowerTrain("StrHV"),
+      new DriveSystem("AWD"),
+      new FuelType("REGULAR")
     ),
     new Car(
       3,
       "NSX",
-      "ホンダ",
+      new Maker("ホンダ"),
       "https://www.honda.co.jp/NSX/types/",
       "https://upload.wikimedia.org/wikipedia/commons/e/ea/2019_Honda_NSX_3.5_CAA-NC1_%2820190722%29_01.jpg",
       27940000,
-      new CarBody("COUPE", 4535, 1940, 1215),
-      "MldHV",
-      "AWD",
-      "PREMIUM"
+      new Body(new BodyType("COUPE"), 4535, 1940, 1215),
+      new PowerTrain("MldHV"),
+      new DriveSystem("AWD"),
+      new FuelType("PREMIUM")
     ),
     new Car(
       4,
       "Honda e",
-      "ホンダ",
+      new Maker("ホンダ"),
       "https://www.honda.co.jp/honda-e/",
       "https://upload.wikimedia.org/wikipedia/commons/9/9e/Honda_e_Advance_%28ZAA-ZC7%29_front.jpg",
       4950000,
-      new CarBody("HATCHBACK", 3895, 1750, 1510),
-      "BEV",
-      "RR",
-      ""
+      new Body(new BodyType("HATCHBACK"), 3895, 1750, 1510),
+      new PowerTrain("BEV"),
+      new DriveSystem("RR"),
+      new FuelType("")
     ),
     new Car(
       5,
       "ノート",
-      "日産",
+      new Maker("日産"),
       "https://www3.nissan.co.jp/vehicles/new/note.html",
       "https://upload.wikimedia.org/wikipedia/commons/0/0a/Nissan_Note_e-POWER_%28E13%29%2C_2021%2C_front-left.jpg",
       2445300,
-      new CarBody("HATCHBACK", 4045, 1695, 1520),
-      "SerHV",
-      "FF",
-      "REGULAR"
+      new Body(new BodyType("HATCHBACK"), 4045, 1695, 1520),
+      new PowerTrain("SerHV"),
+      new DriveSystem("FF"),
+      new FuelType("REGULAR")
     ),
     new Car(
       6,
       "3シリーズツーリング",
-      "BMW",
+      new Maker("BMW"),
       "https://www.bmw.co.jp/ja/all-models/3-series/touring/2019/bmw-3-series-touring-inspire.html",
       "",
       6340000,
-      new CarBody("STATION_WAGON", 4715, 1825, 1475),
-      "ICE",
-      "AWD",
-      "DIESEL"
+      new Body(new BodyType("STATION_WAGON"), 4715, 1825, 1475),
+      new PowerTrain("ICE"),
+      new DriveSystem("AWD"),
+      new FuelType("DIESEL")
     ),
   ];
+
+  const navDrawerData = {
+    makers: [
+      new Maker("マツダ"),
+      new Maker("トヨタ"),
+      new Maker("ホンダ"),
+      new Maker("日産"),
+    ],
+    bodyTypes: [
+      new BodyType("SUV"),
+      new BodyType("HATCHBACK"),
+      new BodyType("SEDAN"),
+    ],
+    powerTrains: [
+      new PowerTrain("ICE"),
+      new PowerTrain("StrHV"),
+      new PowerTrain("MldHV"),
+      new PowerTrain("BEV"),
+      new PowerTrain("SerHV"),
+    ],
+    driveSystems: [
+      new DriveSystem("FF"),
+      new DriveSystem("FR"),
+      new DriveSystem("AWD"),
+    ],
+  };
+
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  const handleMakersSelect = (indecies: number[]) => {
+    console.log(`handleMakersSelect: ${indecies}`);
+  };
+
+  const handleBodyTypesSelect = (indecies: number[]) => {
+    console.log(`handleBodyTypesSelect: ${indecies}`);
+  };
+
+  const handlePowerTrainsSelect = (indecies: number[]) => {
+    console.log(`handlePowerTrainsSelect: ${indecies}`);
+  };
+
+  const handleDriveSystemsSelect = (indecies: number[]) => {
+    console.log(`handleDriveSystemsSelect: ${indecies}`);
+  };
 
   return (
     <>
       <MincuruAppBar handleDrawerToggle={handleDrawerToggle} />
       <CarsDrawer
         handleDrawerToggle={handleDrawerToggle}
+        handleMakersSelect={handleMakersSelect}
+        handleBodyTypesSelect={handleBodyTypesSelect}
+        handlePowerTrainsSelect={handlePowerTrainsSelect}
+        handleDriveSystemsSelect={handleDriveSystemsSelect}
         drawerWidth={drawerWidth}
         mobileOpen={mobileOpen}
+        menus={navDrawerData}
       />
       <Box
         component="main"

@@ -53,13 +53,13 @@ export default function CarItem(props: Props) {
           {props.car.body.height.toLocaleString()}mm
         </Typography>
         <Typography variant="body1" sx={{ mx: 1 }}>
-          {props.car.body.typeLabel()}
+          {props.car.body.type.toLabel()}
           {", "}
-          {props.car.driveSystemLabel()}
+          {props.car.driveSystem.toLabel()}
           {", "}
-          {props.car.powerTrainLabel()}
+          {props.car.powerTrain.toLabel()}
           {", "}
-          {props.car.fuelTypeLabel()}
+          {props.car.fuelType.toLabel()}
         </Typography>
       </Box>
     </Card>

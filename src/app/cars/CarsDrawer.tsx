@@ -1,56 +1,58 @@
 "use client";
-import {
-  Box,
-  Divider,
-  Drawer,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Box, Divider, Drawer } from "@mui/material";
+import { BodyType as BodyType, DriveSystem, Maker, PowerTrain } from "./car";
+import React from "react";
+import CarsFilterList from "./CarsFilterList";
 
 interface Props {
   handleDrawerToggle: Function;
+  handleMakersSelect: Function;
+  handleBodyTypesSelect: Function;
+  handlePowerTrainsSelect: Function;
+  handleDriveSystemsSelect: Function;
   drawerWidth: number;
   mobileOpen: boolean;
+  menus: {
+    makers: Maker[];
+    bodyTypes: BodyType[];
+    powerTrains: PowerTrain[];
+    driveSystems: DriveSystem[];
+  };
 }
 
 export default function CarsDrawer(props: Props) {
   const drawer = (
     <div>
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <CarsFilterList
+        title="メーカー"
+        items={props.menus.makers}
+        handleSelect={props.handleMakersSelect}
+      />
       <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {/* {index % 2 === 0 ? <InboxIcon /> : <MailIcon />} */}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
+      <CarsFilterList
+        title="ボディタイプ"
+        items={props.menus.bodyTypes}
+        handleSelect={props.handleBodyTypesSelect}
+      />
+      <Divider />
+      <CarsFilterList
+        title="パワートレーン"
+        items={props.menus.powerTrains}
+        handleSelect={props.handlePowerTrainsSelect}
+      />
+      <Divider />
+      <CarsFilterList
+        title="駆動方式"
+        items={props.menus.driveSystems}
+        handleSelect={props.handlePowerTrainsSelect}
+      />
     </div>
   );
 
   return (
     <Box
       component="nav"
-      position="fixed"
+      // position="fixed"
       sx={{ width: { sm: props.drawerWidth }, flexShrink: { sm: 0 } }}
       aria-label="mailbox folders"
     >
@@ -74,7 +76,7 @@ export default function CarsDrawer(props: Props) {
         {drawer}
       </Drawer>
       <Drawer
-        variant="permanent"
+        variant="persistent"
         sx={{
           display: { xs: "none", sm: "block" },
           "& .MuiDrawer-paper": {
