@@ -98,6 +98,21 @@ null
 `ページネーションについて未調査`
 https://medium.com/@insidetech/how-to-add-simple-dynamic-pagination-to-your-next-js-13-app-2ad8c7902af0
 
+## GraphQL
+
+### GraphQLスキーマの定義
+
+スキーマは`./schemas/*.graphql`に定義。
+
+### GraphQLスキーマからTypeScript型の生成
+
+以下のコマンドを実行することで、GraphQLスキーマから`./src/generated/graphql.ts`にTypeScript型が生成される。
+このTypeScript型は`./src/app/graphql/route.ts`で読み込んで使用している。
+
+```
+npm run codegen
+```
+
 ## テスト
 
 `未着手`

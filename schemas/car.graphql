@@ -1,0 +1,12 @@
+type Car {
+  id: Int!
+  modelName: String!
+  makerName: String!
+  url: String
+  imageUrl: String
+  price: Int
+  body: Body
+  powerTrain: String
+  driveSystem: String
+  fuelType: String
+}

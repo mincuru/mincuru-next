@@ -1,0 +1,6 @@
+type Body {
+  type: String!
+  length: Int
+  width: Int
+  height: Int
+}

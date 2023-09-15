@@ -15,15 +15,53 @@ export type Scalars = {
   Float: { input: number; output: number; }
 };
 
+export type Body = {
+  __typename?: 'Body';
+  height?: Maybe<Scalars['Int']['output']>;
+  length?: Maybe<Scalars['Int']['output']>;
+  type: Scalars['String']['output'];
+  width?: Maybe<Scalars['Int']['output']>;
+};
+
 export type Book = {
   __typename?: 'Book';
   author?: Maybe<Scalars['String']['output']>;
   title?: Maybe<Scalars['String']['output']>;
 };
 
+export type Car = {
+  __typename?: 'Car';
+  body?: Maybe<Body>;
+  driveSystem?: Maybe<Scalars['String']['output']>;
+  fuelType?: Maybe<Scalars['String']['output']>;
+  id: Scalars['Int']['output'];
+  imageUrl?: Maybe<Scalars['String']['output']>;
+  makerName: Scalars['String']['output'];
+  modelName: Scalars['String']['output'];
+  powerTrain?: Maybe<Scalars['String']['output']>;
+  price?: Maybe<Scalars['Int']['output']>;
+  url?: Maybe<Scalars['String']['output']>;
+};
+
+export type DriveSystem = {
+  __typename?: 'DriveSystem';
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type FuelType = {
+  __typename?: 'FuelType';
+  value?: Maybe<Scalars['String']['output']>;
+};
+
+export type PowerTrain = {
+  __typename?: 'PowerTrain';
+  value?: Maybe<Scalars['String']['output']>;
+};
+
 export type Query = {
   __typename?: 'Query';
   books?: Maybe<Array<Maybe<Book>>>;
+  cars?: Maybe<Array<Maybe<Car>>>;
 };
 
 
@@ -97,18 +135,38 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
+  Body: ResolverTypeWrapper<Body>;
   Book: ResolverTypeWrapper<Book>;
   Boolean: ResolverTypeWrapper<Scalars['Boolean']['output']>;
+  Car: ResolverTypeWrapper<Car>;
+  DriveSystem: ResolverTypeWrapper<DriveSystem>;
+  FuelType: ResolverTypeWrapper<FuelType>;
+  Int: ResolverTypeWrapper<Scalars['Int']['output']>;
+  PowerTrain: ResolverTypeWrapper<PowerTrain>;
   Query: ResolverTypeWrapper<{}>;
   String: ResolverTypeWrapper<Scalars['String']['output']>;
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
+  Body: Body;
   Book: Book;
   Boolean: Scalars['Boolean']['output'];
+  Car: Car;
+  DriveSystem: DriveSystem;
+  FuelType: FuelType;
+  Int: Scalars['Int']['output'];
+  PowerTrain: PowerTrain;
   Query: {};
   String: Scalars['String']['output'];
+};
+
+export type BodyResolvers<ContextType = any, ParentType extends ResolversParentTypes['Body'] = ResolversParentTypes['Body']> = {
+  height?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  length?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  type?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  width?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
 export type BookResolvers<ContextType = any, ParentType extends ResolversParentTypes['Book'] = ResolversParentTypes['Book']> = {
@@ -117,12 +175,47 @@ export type BookResolvers<ContextType = any, ParentType extends ResolversParentT
   __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
 };
 
+export type CarResolvers<ContextType = any, ParentType extends ResolversParentTypes['Car'] = ResolversParentTypes['Car']> = {
+  body?: Resolver<Maybe<ResolversTypes['Body']>, ParentType, ContextType>;
+  driveSystem?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  fuelType?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  id?: Resolver<ResolversTypes['Int'], ParentType, ContextType>;
+  imageUrl?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  makerName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  modelName?: Resolver<ResolversTypes['String'], ParentType, ContextType>;
+  powerTrain?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  price?: Resolver<Maybe<ResolversTypes['Int']>, ParentType, ContextType>;
+  url?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type DriveSystemResolvers<ContextType = any, ParentType extends ResolversParentTypes['DriveSystem'] = ResolversParentTypes['DriveSystem']> = {
+  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type FuelTypeResolvers<ContextType = any, ParentType extends ResolversParentTypes['FuelType'] = ResolversParentTypes['FuelType']> = {
+  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
+export type PowerTrainResolvers<ContextType = any, ParentType extends ResolversParentTypes['PowerTrain'] = ResolversParentTypes['PowerTrain']> = {
+  value?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>;
+  __isTypeOf?: IsTypeOfResolverFn<ParentType, ContextType>;
+};
+
 export type QueryResolvers<ContextType = any, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   books?: Resolver<Maybe<Array<Maybe<ResolversTypes['Book']>>>, ParentType, ContextType>;
+  cars?: Resolver<Maybe<Array<Maybe<ResolversTypes['Car']>>>, ParentType, ContextType>;
 };
 
 export type Resolvers<ContextType = any> = {
+  Body?: BodyResolvers<ContextType>;
   Book?: BookResolvers<ContextType>;
+  Car?: CarResolvers<ContextType>;
+  DriveSystem?: DriveSystemResolvers<ContextType>;
+  FuelType?: FuelTypeResolvers<ContextType>;
+  PowerTrain?: PowerTrainResolvers<ContextType>;
   Query?: QueryResolvers<ContextType>;
 };
 
