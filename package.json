@@ -9,12 +9,18 @@
     "lint": "next lint",
     "openapi": "npm run openapi:export && npm run openapi:generate",
     "openapi:export": "npx next-swagger-doc-cli next-swagger-doc.json",
-    "openapi:generate": "npx orval"
+    "openapi:generate": "npx orval",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@apollo/server": "^4.9.3",
+    "@as-integrations/next": "^2.0.2",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fontsource/roboto": "^5.0.8",
+    "@graphql-tools/graphql-file-loader": "^8.0.0",
+    "@graphql-tools/load": "^8.0.0",
+    "@graphql-tools/schema": "^10.0.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.5",
     "@prisma/client": "^5.0.0",
@@ -24,7 +30,10 @@
     "autoprefixer": "10.4.14",
     "eslint": "8.44.0",
     "eslint-config-next": "13.4.9",
+    "graphql": "^16.8.0",
+    "graphql-tag": "^2.12.6",
     "next": "13.4.9",
+    "prettier": "^3.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "swr": "^2.2.0",
@@ -32,13 +41,19 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-codegen/typescript": "4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "4.0.1",
     "@types/swagger-ui-react": "^4.18.0",
     "eslint-plugin-jsdoc": "^46.4.3",
     "eslint-plugin-react-hooks": "^5.0.0-canary-7118f5dd7-20230705",
     "next-swagger-doc": "^0.4.0",
     "orval": "^6.17.0",
     "prisma": "^5.0.0",
-    "swagger-ui-react": "^5.1.1"
+    "swagger-ui-react": "^5.1.1",
+    "@graphql-codegen/introspection": "4.0.0"
   },
   "volta": {
     "node": "18.16.0",

@@ -1,4 +1,4 @@
-"use client";
+// "use client";
 import { Box, Divider, Drawer } from "@mui/material";
 import { BodyType as BodyType, DriveSystem, Maker, PowerTrain } from "./car";
 import React from "react";
